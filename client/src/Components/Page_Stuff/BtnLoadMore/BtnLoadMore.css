@@ -1,0 +1,20 @@
+.btnloadmore {
+  background: #16d47b;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 50px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btnloadmore p {
+  font-family: 'Abel', sans-serif;
+  font-size:42px;
+  padding: 20px;
+}
+
+.btnloadmore:hover {
+  opacity: 0.8;
+}

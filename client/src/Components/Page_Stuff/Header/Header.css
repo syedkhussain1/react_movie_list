@@ -1,0 +1,38 @@
+.header{
+  
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3333;
+}
+.title {
+  width: 300px;
+  margin-top: 20px;
+  float: left;
+  color: aliceblue;
+}
+
+
+.header-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(44, 44, 44);
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}

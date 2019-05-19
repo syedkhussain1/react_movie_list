@@ -1,0 +1,30 @@
+.actor {
+    box-sizing: border-box;
+    
+  }
+  .actor img {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    
+  }
+  
+  .actor-name {
+    font-family: 'Abel', sans-serif;
+    font-size: 22px;
+    color:#FFFFFF;
+    float: right;
+    margin: 10px 20px;
+    width: 40%;
+    box-sizing: border-box;
+  }
+
+  .character {
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+    color:#fff;
+    float: right;
+    margin: 0 20px 10px 20px;
+    width: 40%;
+    box-sizing: border-box;
+  }

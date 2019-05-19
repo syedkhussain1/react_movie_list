@@ -1,0 +1,34 @@
+.grid h1 {
+  font-family: 'Abel', sans-serif;
+  font-size:42px;
+}
+
+.grid-content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+.grid-element {
+  background: #cfcfcf;
+  max-height: 430px;
+  animation: animateGrid 0.5s;
+  overflow: hidden;
+}
+
+
+
+@media screen and (max-width: 720px) {
+  .grid-content {
+    grid-template-columns: auto auto;
+  }
+
+  .grid-element:nth-child(2n+2) {
+    margin-right: 0;
+  }
+
+  .grid h1 {
+    font-size:22px;
+  }
+}
