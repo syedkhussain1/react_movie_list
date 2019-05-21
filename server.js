@@ -5,6 +5,8 @@ const ObjectId = require('mongodb').ObjectId;
 const app = express();
 app.use(express.json());
 
+db = client.db(ayemdb);
+
 /// YOUR ROUTES GO HERE!
 
 
@@ -12,11 +14,27 @@ app.use(express.json());
 
 // Totally insecure backend routes below, good only for rapid prototyping
 // unsecured front-end applications. Should not be used in production.
+app.post('/api/mongodb/ayemdb/', (request, response) => {
+  console.log('posting!')
+  const collectionName = request.params.movielist;
+  const data = request.body;
+
+  db.collection(collectionName)
+    .insert(data, (err, results) => {
+      // Got data back.. send to client
+      if (err) throw err;
+
+      response.json({
+        'success': true,
+        'results': results,
+      });
+    });
+});
 
 
 // GET for getting existing item
-app.get('/api/mongodb/:collectionName/', (request, response) => {
-  const collectionName = request.params.collectionName;
+app.get('/api/mongodb/:movielist/', (request, response) => {
+  const collectionName = request.params.movielist;
 
   // Get GET params, if there are any
   const query = request.query || {};
@@ -37,8 +55,8 @@ app.get('/api/mongodb/:collectionName/', (request, response) => {
 });
 
 // POST for creating a new item
-app.post('/api/mongodb/:collectionName/', (request, response) => {
-  const collectionName = request.params.collectionName;
+app.post('/api/mongodb/:movielist/', (request, response) => {
+  const collectionName = request.params.movielist;
   const data = request.body;
 
   db.collection(collectionName)

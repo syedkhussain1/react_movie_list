@@ -2,10 +2,17 @@ import React from 'react'
 import BtnAddToList from "../BtnAddToList/BtnAddToList";
 import './MovieInfo.css'
 
+
 const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
 const BACKDROP_SIZE = "w1280";
 
 const MovieInfo = (props) => {
+
+    // addToList = (id) =>{
+
+    //     console.log("I am in add to list function")
+    // }
+
     return (
         <div className="movieinfo" 
             style={{background:`url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.img}')`}}
@@ -21,7 +28,7 @@ const MovieInfo = (props) => {
                     {props.directors.map((director, index) =>{
                         return <p>{director.name}</p>
                     })}
-                    <BtnAddToList />
+                    <BtnAddToList addToList={props.addToList}/>
                 </div>
                 
             

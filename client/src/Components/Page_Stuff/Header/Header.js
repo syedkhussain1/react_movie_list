@@ -19,15 +19,15 @@ class Header extends Component {
     return ( 
       <div>
       <div className="header">
-       <ul className="header-ul">
-        <h2 className="title">AaayeMDB</h2>
-        <li><a class="active" href="#home">About</a></li>
-        <li><a href="#about" onClick={this.displayMovieList}>Watch List</a></li>
-      </ul>
-      </div>
+       <div className="header-content">
+       <BrowserRouter>
+          <Link to="/">
+            <h1 className="title">AaayeMDB</h1>
+            </Link>
+       </BrowserRouter>
        
          
-         {/* <BtnWatchList onClick={this.displayMovieList} text="Watch List"/> */}
+         <BtnWatchList onClick={this.displayMovieList} text="Watch List"/>
          <MovieList 
           onClose = {this.displayMovieList}
           display={this.state.displayMovieList}>
@@ -47,7 +47,11 @@ class Header extends Component {
           <p>----------------------</p> 
         </MovieList>
        </div>
+     </div>
 
+     
+
+     </div>
      
 
      );

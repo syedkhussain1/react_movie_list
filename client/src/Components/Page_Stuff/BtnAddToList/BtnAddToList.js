@@ -3,7 +3,7 @@ import './BtnAddToList.css'
 
 const BtnWatchList = (props) =>{
     return (
-        <button className="btnaddtolist"  text="Add to watch list">
+        <button onClick={props.addToList} className="btnaddtolist"  text="Add to watch list">
             Add to watch list
         </button>
     )

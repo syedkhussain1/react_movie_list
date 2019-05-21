@@ -8,6 +8,8 @@ import MovieInfoSection from "../Page_Stuff/MovieInfoSection/MovieInfoSection";
 import BtnWatchList from "../Page_Stuff/BtnWatchList/BtnWatchList";
 import ShowMoviePath from "../Page_Stuff/ShowMoviePath/ShowMoviePath";
 import MovieList from "../MovieList/MovieList";
+//import Carousel from '@brainhubeu/react-carousel';
+//import '@brainhubeu/react-carousel/lib/style.css';
 
 import { timeout } from "q";
 
@@ -28,6 +30,7 @@ class Movie extends Component {
     movieImgPath: null,
     runTime: null,
     releaseDate: null,
+    movieId: '',
     
   };
 
@@ -54,7 +57,7 @@ class Movie extends Component {
     fetch(url)
       .then(respose => respose.json())
       .then(data => {
-        console.log(data);
+        console.log("-------", data);
         this.setState({
           movie: data,
           loading: false,
@@ -63,7 +66,8 @@ class Movie extends Component {
           imdbRating: data.vote_average,
           movieImgPath: data.backdrop_path,
           runTime: data.runtime,
-          releaseDate: data.release_date
+          releaseDate: data.release_date,
+          movieId: data.id
         });
       });
   };
@@ -72,11 +76,11 @@ class Movie extends Component {
     fetch(url)
       .then(respose => respose.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         const directors = data.crew.filter(person => person.job === "Director");
         const casts = data.cast;
         // console.log("directors--- ", directors);
-        console.log("Actors---- ", data.cast);
+        // console.log("Actors---- ", data.cast);
         // console.log("Link---- ", data.cast.profile_path);
 
         // const names = casts.map((cast) =>{
@@ -96,6 +100,11 @@ class Movie extends Component {
       });
   };
 
+  addToList = (event) => {
+    console.log('Movie ID ', this.state.movieId)
+    console.log('Movie ID ', typeof(this.state.movieId))
+  }
+
   render() {
     return (
       <div className="">
@@ -106,6 +115,8 @@ class Movie extends Component {
           movieName={this.state.title}
           description={this.state.description}
           directors={this.state.directors}
+          id={this.state.movieId}
+          addToList={this.addToList}
         />
         <MovieInfoSection
           runTime={this.state.runTime}
@@ -115,7 +126,21 @@ class Movie extends Component {
 
         
         <div className="movie-grid">
-
+        {/* <Carousel
+        slidesPerPage={5}
+        itemWidth={200}
+        arrows
+        >
+        {this.state.actorsData.map((actor, index) => {
+          console.log("actors------", actor);
+              return (
+                <ActorList key={index} actorName={actor.name} 
+                actorThumb={actor.profile_path} 
+                character={actor.character}
+                />
+              );
+            })} 
+            </Carousel> */}
 
           </div> 
           
