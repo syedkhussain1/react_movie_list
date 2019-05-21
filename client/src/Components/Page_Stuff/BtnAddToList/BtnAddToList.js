@@ -1,7 +1,7 @@
 import React from 'react'
 import './BtnAddToList.css'
 
-const BtnWatchList = (props) =>{
+const BtnAddToList = (props) =>{
     return (
         <button onClick={props.addToList} className="btnaddtolist"  text="Add to watch list">
             Add to watch list
@@ -9,4 +9,4 @@ const BtnWatchList = (props) =>{
     )
 }
 
-export default BtnWatchList;
+export default BtnAddToList;

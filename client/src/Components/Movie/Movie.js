@@ -102,7 +102,23 @@ class Movie extends Component {
 
   addToList = (event) => {
     console.log('Movie ID ', this.state.movieId)
-    console.log('Movie ID ', typeof(this.state.movieId))
+    console.log('Movie Name ', this.state.title)
+    const movieData = {
+            movieID : this.state.movieId,
+            movieName: this.state.title,
+    };
+
+    fetch('/api/mongodb/movielist/', {
+      
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(movieData),
+      })
+      .then(console.log('sandwich'))
+      .then(response => response.json())
+      .then(data => {
+        console.log('hello you have dataaaaaa', data);
+      });
   }
 
   render() {
