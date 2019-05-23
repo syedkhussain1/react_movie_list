@@ -4,33 +4,7 @@ import "./MovieList.css";
 
 class MovieList extends Component {
   state = {
-    watchList: [
-      {
-        id: 1,
-        title: "Batman",
-        movieWatched: false
-      },
-      {
-        id: 2,
-        title: "Superman",
-        movieWatched: false
-      },
-      {
-        id: 3,
-        title: "Spiderman",
-        movieWatched: false
-      },
-      {
-        id: 4,
-        title: "Avengers",
-        movieWatched: false
-      },
-      {
-        id: 5,
-        title: "Superwomen",
-        movieWatched: true
-      },
-    ]
+    watchList: []
   };
 
   getStyle = () => {

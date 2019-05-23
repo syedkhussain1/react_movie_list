@@ -106,6 +106,7 @@ class Movie extends Component {
     const movieData = {
             movieID : this.state.movieId,
             movieName: this.state.title,
+            movieWatched: false,
     };
 
     fetch('/api/mongodb/movielist/', {
@@ -117,7 +118,7 @@ class Movie extends Component {
       .then(console.log('sandwich'))
       .then(response => response.json())
       .then(data => {
-        console.log('hello you have dataaaaaa', data);
+        console.log('Stored data to the database!!!!!!', data);
       });
   }
 

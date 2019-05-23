@@ -7,13 +7,26 @@ import "./Header.css";
 //Stateless component
 
 class Header extends Component {
-  state = { displayMovieList: false }
+  state = { 
+          movieData:[],
+           displayMovieList: false 
+          }
 
   displayMovieList = () => {
-    this.setState({
-      displayMovieList: !this.state.displayMovieList
-    })
-  }
+      console.log('Fetching data from API');
+      fetch('/api/mongodb/movielist/')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Got data back', data);
+          this.setState({
+            displayMovieList: !this.state.displayMovieList,
+            movieData: data
+
+          });
+        });
+      }
+    
+  
 
   render() { 
     return ( 
