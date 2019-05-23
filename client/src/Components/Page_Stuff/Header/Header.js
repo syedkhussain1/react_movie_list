@@ -8,7 +8,7 @@ import "./Header.css";
 
 class Header extends Component {
   state = { 
-          movieData:[],
+          movieDataFromDB:[],
            displayMovieList: false 
           }
 
@@ -20,7 +20,7 @@ class Header extends Component {
           console.log('Got data back', data);
           this.setState({
             displayMovieList: !this.state.displayMovieList,
-            movieData: data
+            movieDataFromDB: data
 
           });
         });
@@ -43,21 +43,9 @@ class Header extends Component {
          <BtnWatchList onClick={this.displayMovieList} text="Watch List"/>
          <MovieList 
           onClose = {this.displayMovieList}
-          display={this.state.displayMovieList}>
-          <p>----------------------</p>
-          <h3>1. Batman</h3>
-          <p>----------------------</p>
-          <h3>2. Super Man</h3>
-          <p>----------------------</p>
-          <h3>3. Avengers</h3>
-          <p>----------------------</p>
-          <p>----------------------</p>
-          <h3>1. Batman</h3>
-          <p>----------------------</p>
-          <h3>2. Super Man</h3>
-          <p>----------------------</p>
-          <h3>3. Avengers</h3>
-          <p>----------------------</p> 
+          display={this.state.displayMovieList}
+          dataFromDB={this.state.movieDataFromDB}>
+          
         </MovieList>
        </div>
      </div>

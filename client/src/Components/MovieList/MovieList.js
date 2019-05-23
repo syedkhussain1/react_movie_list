@@ -3,13 +3,13 @@ import "./MovieList.css";
 
 
 class MovieList extends Component {
-  state = {
-    watchList: []
-  };
+
+//   movieID: 458156
+// movieName: "John Wick:
 
   getStyle = () => {
     console.log("I am in getStyle function ");
-    this.state.watchList.map(movie => {
+    this.props.dataFromDB.map(movie => {
       return {
         background: "#f4f4f4",
         padding: "10px",
@@ -24,31 +24,31 @@ class MovieList extends Component {
   };
 
   //This will toggle using the check box
-  toggleComplete = (event) => {
-      console.log("I am in mark complete function")
-      //TODO
-      this.setState({
-        watchList: this.state.watchList.map((movie) => {
-            if(movie.id === 1){
-                movie.movieWatched = !movie.movieWatched
-            }
-            return movie;
-        })
-      })
+  // toggleComplete = (event) => {
+  //     console.log("I am in mark complete function")
+  //     //TODO
+  //     this.setState({
+  //       : this.props.dataFromDB.map((movie) => {
+  //           if(movie.movieID === movieID){
+  //               movie.movieWatched = !movie.movieWatched
+  //           }
+  //           return movie;
+  //       })
+  //     })
 
-  }
+  // }
 
-  delMovie = (event) => {
-      console.log("I am in delete function")
-      this.setState({
-                    //spread operator copies from watchList and then filters
-          watchList: [...this.state.watchList.filter((movie) => 
-                        movie.id !== movie.id)]
-      })
-  }
+  // delMovie = (event) => {
+  //     console.log("I am in delete function")
+  //     this.setState({
+  //                   //spread operator copies from watchList and then filters
+  //         watchList: [...this.props.dataFromDB.filter((movie) => 
+  //                       movie.id !== movie.id)]
+  //     })
+  // }
 
   render() {
-    console.log(this.state.watchList);
+    console.log(this.props.dataFromDB);
     if (!this.props.display) {
       return null;
     }
@@ -58,7 +58,7 @@ class MovieList extends Component {
           {/* {this.props.children} */}
           <h1 style={headerStyle}>Your watch list</h1>
           
-            {this.state.watchList.map(movie => {
+            {this.props.dataFromDB.map(movie => {
               return (
                 <h3
                   style={{
@@ -73,7 +73,7 @@ class MovieList extends Component {
                 {/* How to send the id back to the function */}
                 <input type="checkbox" onChange={this.toggleComplete}/>
                   {' '}
-                  {movie.title}
+                  {movie.movieName}
                   <button style={btnStyle} onClick={this.delMovie}>x</button>
                 </h3>
               );
