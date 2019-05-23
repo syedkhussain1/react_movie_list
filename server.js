@@ -5,7 +5,9 @@ const ObjectId = require('mongodb').ObjectId;
 const app = express();
 app.use(express.json());
 
-db = client.db(ayemdb);
+let db = null;
+
+//db = client.db(ayemdb);
 
 /// YOUR ROUTES GO HERE!
 
@@ -169,7 +171,6 @@ const MONGODB_URL = process.env.MONGODB_URI;
 const splitUrl = MONGODB_URL.split('/');
 const mongoDbDatabaseName = splitUrl[splitUrl.length - 1];
 
-let db;
 // First connect to MongoDB, then start HTTP server
 MongoClient.connect(MONGODB_URL, {useNewUrlParser: true}, (err, client) => {
   if (err) throw err;
