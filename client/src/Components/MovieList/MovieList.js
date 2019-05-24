@@ -38,14 +38,24 @@ class MovieList extends Component {
 
   // }
 
-  // delMovie = (event) => {
-  //     console.log("I am in delete function")
-  //     this.setState({
-  //                   //spread operator copies from watchList and then filters
-  //         watchList: [...this.props.dataFromDB.filter((movie) => 
-  //                       movie.id !== movie.id)]
-  //     })
-  // }
+  delMovie = (event) => {
+      console.log("I am in delete function")
+      // this.setState({
+      //               //spread operator copies from watchList and then filters
+      //     watchList: [...this.props.dataFromDB.filter((movie) => 
+      //                   movie.id !== movie.id)]
+      // })
+      fetch('/api/mongodb/movielist/?_id=' + '5ce74ae757f69e8b9d2d9727', {
+        method: 'DELETE',
+      })
+      // .then(response => response.json())
+      // .then(data => {
+      //   console.log('deleted from list', data);
+
+      //   // Call method to refresh data
+      //   this.fetchPosts();
+      // });
+  }
 
   render() {
     console.log(this.props.dataFromDB);
