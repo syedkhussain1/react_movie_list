@@ -9,7 +9,7 @@ import "./Header.css";
 class Header extends Component {
   state = { 
           movieDataFromDB:[],
-           displayMovieList: false 
+           displayMovieList: false,
           }
 
   displayMovieList = () => {
@@ -59,9 +59,8 @@ class Header extends Component {
     //This will toggle using the check box
   toggleComplete = (movieId) => {
       console.log("I am in mark complete function")
-      //TODO
       const movieSeen  = {
-        movieWatched: true,
+        movieWatched: true
       };
 
       fetch('/api/mongodb/movielist/?_id=' + movieId, {

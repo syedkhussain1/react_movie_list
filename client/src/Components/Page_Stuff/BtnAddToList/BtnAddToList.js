@@ -14,3 +14,5 @@ const BtnAddToList = (props) =>{
 }
 
 export default BtnAddToList;
+//onClick={(event) => { func1(); func2();}}
+//
