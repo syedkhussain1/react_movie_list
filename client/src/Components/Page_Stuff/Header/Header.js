@@ -26,6 +26,61 @@ class Header extends Component {
         });
       }
     
+      
+  updateMovieList = () => {
+    console.log('Fetching data from API');
+    fetch('/api/mongodb/movielist/')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Got data back', data);
+        this.setState({
+          movieDataFromDB: data
+
+        });
+      });
+    }
+  
+
+  delMovie = (movieId) => {
+    console.log("I am in delete function")
+
+    fetch('/api/mongodb/movielist/?_id=' + movieId, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('deleted from list', data);
+
+      // Call method to refresh data
+      this.updateMovieList();
+    });
+  }
+
+    //This will toggle using the check box
+  toggleComplete = (movieId) => {
+      console.log("I am in mark complete function")
+      //TODO
+      const movieSeen  = {
+        movieWatched: true,
+      };
+
+      fetch('/api/mongodb/movielist/?_id=' + movieId, {
+      
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(movieSeen),
+      })
+      .then(console.log('sandwich'))
+      .then(response => response.json())
+      .then(data => {
+        console.log('Stored data to the database!!!!!!', data);
+
+      // Call method to refresh data
+      this.updateMovieList();
+      });
+      
+
+  }
   
 
   render() { 
@@ -44,7 +99,9 @@ class Header extends Component {
          <MovieList 
           onClose = {this.displayMovieList}
           display={this.state.displayMovieList}
-          dataFromDB={this.state.movieDataFromDB}>
+          dataFromDB={this.state.movieDataFromDB}
+          onDelete={this.delMovie}
+          toggle={this.toggleComplete}>
           
         </MovieList>
        </div>
@@ -61,15 +118,4 @@ class Header extends Component {
  
 export default Header;
 
-// const Header = () => {
-//   return (
-//     <div className="header">
-//       <div className="header-content">
-//         <h1 className="title">AyeMDB</h1>
-//         <BtnWatchList text="Watch List"/>
-//       </div>
-//     </div>
-//   );
-// };
 
-// export default Header;
